@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
+import android.support.design.widget.TabLayout;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private TextInputLayout firstNameLayout, secondNameLayout;
     private EditText firstName, surName;
     private FloatingActionButton fab;
+    private TabLayout tabLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +44,11 @@ public class MainActivity extends AppCompatActivity {
         secondNameLayout = (TextInputLayout) findViewById(R.id.secondNameLayout);
         firstName = (EditText) findViewById(R.id.firstName);
         surName = (EditText) findViewById(R.id.surName);
+
+        tabLayout = (TabLayout)findViewById(R.id.tabs);
+        tabLayout.addTab(tabLayout.newTab().setText("Contact"));
+        tabLayout.addTab(tabLayout.newTab().setText("Message"));
+        tabLayout.addTab(tabLayout.newTab().setText("Images"));
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         if (navigationView != null) {
