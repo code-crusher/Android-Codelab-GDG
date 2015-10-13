@@ -11,6 +11,8 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -55,6 +57,32 @@ public class MainActivity extends AppCompatActivity {
         });
 
         setStoredValues();
+
+        TextWatcher textWatcher = new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                fab.show();
+                if (surName.getText().toString().trim().length() > 0) {
+                    secondNameLayout.setError("");
+                }
+                if (firstName.getText().toString().trim().length() > 0) {
+                    firstNameLayout.setError("");
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        };
+
+        firstName.addTextChangedListener(textWatcher);
+        surName.addTextChangedListener(textWatcher);
     }
 
     private void setupDrawerContent(NavigationView navigationView) {
