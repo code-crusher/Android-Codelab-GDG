@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">Android Codelab GDG</string>
     <string name="action_settings">Settings</string>
+
+    <string name="home">Home</string>
+    <string name="category1">Category 1</string>
+    <string name="category2">Category 2</string>
+    <string name="subItems">Sub Items</string>
+    <string name="Subitem">Sub item</string>
+
 </resources>
