@@ -7,5 +7,6 @@
     <string name="category2">Category 2</string>
     <string name="subItems">Sub Items</string>
     <string name="Subitem">Sub item</string>
-
+    <string name="first_name">First Name</string>
+    <string name="second_name">Second Name</string>
 </resources>
