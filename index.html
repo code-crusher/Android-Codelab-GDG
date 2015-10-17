@@ -15,7 +15,7 @@
 <body>
   <section class="page-header">
     <h1 class="project-name">Android Codelab</h1>
-    <h2 class="project-tagline">Beginners Guide</h2>
+    <h2 class="project-tagline">Beginners Guide by Vatsal Bajpai</h2>
     <a href="https://github.com/Vatsal-Bajpai/Android-Codelab" class="btn">View on GitHub</a>
     <a href="https://github.com/Vatsal-Bajpai/Android-Codelab/zipball/master" class="btn">Download .zip</a>
     <a href="https://github.com/Vatsal-Bajpai/Android-Codelab/tarball/master" class="btn">Download .tar.gz</a>
@@ -178,610 +178,411 @@
       <br /> 7. Now to Run the app either choose Run 'app' from menu bar.
       <br /> 8. You will see this popup either Use a device( <a href="http://appyware.blogspot.in/2015/03/enable-usb-debugging.html" target="_blank"> Follow this link to learn )</a> or Create AVD( <a href="http://appyware.blogspot.in/2015/03/create-android-virtual-device.html"
       target="_blank">Follow this link to learn</a> ). Select the choice and press OK.
-      <br />
-      <br /> To replace your name instead of Hello World! text :
-      <br /> 1. In your activity_main.xml and in the text part of the code browse to TextView and android:text="@string/hello_world". Replace this line by android:text="Your name".
-      <pre>
-        <code> android:text="Android Codelab "
-        </code>
-      </pre>
 
       <h3>
-        <a id="allow-the-user-to-send-a-message" class="anchor" href="#allow-the-user-to-send-a-message" aria-hidden="true">
+        <a id="adding-contacts" class="anchor" href="#adding-contacts" aria-hidden="true">
           <span class="octicon octicon-link"></span>
-        </a>Allow the user to send a message</h3>
+        </a>Adding Contacts with user input</h3>
 
-      <p>Duration: 0:20</p>
-
-      <p>Now we can start sending data to Firebase! In this step we’ll allow the user to enter a message in a text box. When they then click the Send button, we will send the message to Firebase.</p>
+      <p>Now we need to add contacs in the application.</p>
+      <p>To display contact image we will use ImageView.</p>
+      <p>To take input we will use EditText and TextInputLayouy.</p>
 
       <ul>
         <li>We’ll first add the necessary views to activity_main.xml:</li>
       </ul>
 
-      <pre>
-        <code> &lt;LinearLayout android:id="@+id/footer" android:layout_alignParentBottom="true" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal"&gt; &lt;EditText android:id="@+id/message_text" android:layout_width="0dp"
-          android:layout_weight="1" android:layout_height="wrap_content" android:singleLine="true" android:inputType="textShortMessage" /&gt; &lt;Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Send" /&gt;
-          &lt;/LinearLayout&gt;
-        </code>
-      </pre>
 
-      <p>Now we have an EditText, where the user can enter their chat message, and a Button that they can click to send the message.</p>
+<div style="background: #ffffff; overflow:auto;width:auto;border:white;border-width:.0em .0em .0em .0em;padding:.0em .0em"><pre style="margin: 0; line-height: 125%"> <span style="color: #007700">&lt;RelativeLayout</span>
 
+            <span style="color: #0000CC">android:id=</span><span style="background-color: #fff0f0">&quot;@+id/container&quot;</span>
+            <span style="color: #0000CC">android:layout_width=</span><span style="background-color: #fff0f0">&quot;wrap_content&quot;</span>
+            <span style="color: #0000CC">android:layout_height=</span><span style="background-color: #fff0f0">&quot;wrap_content&quot;</span>
+            <span style="color: #0000CC">android:layout_below=</span><span style="background-color: #fff0f0">&quot;@id/appbar&quot;</span>
+            <span style="color: #0000CC">android:layout_margin=</span><span style="background-color: #fff0f0">&quot;@dimen/activity_vertical_margin&quot;</span><span style="color: #007700">&gt;</span>
+
+            <span style="color: #007700">&lt;ImageView</span>
+                <span style="color: #0000CC">android:id=</span><span style="background-color: #fff0f0">&quot;@+id/profile&quot;</span>
+                <span style="color: #0000CC">android:layout_width=</span><span style="background-color: #fff0f0">&quot;@dimen/photo_width&quot;</span>
+                <span style="color: #0000CC">android:layout_height=</span><span style="background-color: #fff0f0">&quot;@dimen/photo_height&quot;</span>
+                <span style="color: #0000CC">android:layout_centerVertical=</span><span style="background-color: #fff0f0">&quot;true&quot;</span>
+                <span style="color: #0000CC">android:src=</span><span style="background-color: #fff0f0">&quot;@drawable/photo&quot;</span> <span style="color: #007700">/&gt;</span>
+
+            <span style="color: #007700">&lt;android.support.design.widget.TextInputLayout</span>
+                <span style="color: #0000CC">android:id=</span><span style="background-color: #fff0f0">&quot;@+id/firstNameLayout&quot;</span>
+                <span style="color: #0000CC">android:layout_width=</span><span style="background-color: #fff0f0">&quot;match_parent&quot;</span>
+                <span style="color: #0000CC">android:layout_height=</span><span style="background-color: #fff0f0">&quot;wrap_content&quot;</span>
+                <span style="color: #0000CC">android:layout_marginLeft=</span><span style="background-color: #fff0f0">&quot;@dimen/activity_vertical_margin&quot;</span>
+                <span style="color: #0000CC">android:layout_toRightOf=</span><span style="background-color: #fff0f0">&quot;@+id/profile&quot;</span><span style="color: #007700">&gt;</span>
+
+                <span style="color: #007700">&lt;EditText</span>
+                    <span style="color: #0000CC">android:id=</span><span style="background-color: #fff0f0">&quot;@+id/firstName&quot;</span>
+                    <span style="color: #0000CC">android:layout_width=</span><span style="background-color: #fff0f0">&quot;match_parent&quot;</span>
+                    <span style="color: #0000CC">android:layout_height=</span><span style="background-color: #fff0f0">&quot;wrap_content&quot;</span>
+                    <span style="color: #0000CC">android:hint=</span><span style="background-color: #fff0f0">&quot;@string/first_name&quot;</span> <span style="color: #007700">/&gt;</span>
+            <span style="color: #007700">&lt;/android.support.design.widget.TextInputLayout&gt;</span>
+
+            <span style="color: #007700">&lt;android.support.design.widget.TextInputLayout</span>
+                <span style="color: #0000CC">android:id=</span><span style="background-color: #fff0f0">&quot;@+id/secondNameLayout&quot;</span>
+                <span style="color: #0000CC">android:layout_width=</span><span style="background-color: #fff0f0">&quot;match_parent&quot;</span>
+                <span style="color: #0000CC">android:layout_height=</span><span style="background-color: #fff0f0">&quot;wrap_content&quot;</span>
+                <span style="color: #0000CC">android:layout_below=</span><span style="background-color: #fff0f0">&quot;@+id/firstNameLayout&quot;</span>
+                <span style="color: #0000CC">android:layout_marginLeft=</span><span style="background-color: #fff0f0">&quot;@dimen/activity_vertical_margin&quot;</span>
+                <span style="color: #0000CC">android:layout_toRightOf=</span><span style="background-color: #fff0f0">&quot;@+id/profile&quot;</span><span style="color: #007700">&gt;</span>
+
+                <span style="color: #007700">&lt;EditText</span>
+                    <span style="color: #0000CC">android:id=</span><span style="background-color: #fff0f0">&quot;@+id/surName&quot;</span>
+                    <span style="color: #0000CC">android:layout_width=</span><span style="background-color: #fff0f0">&quot;match_parent&quot;</span>
+                    <span style="color: #0000CC">android:layout_height=</span><span style="background-color: #fff0f0">&quot;wrap_content&quot;</span>
+                    <span style="color: #0000CC">android:hint=</span><span style="background-color: #fff0f0">&quot;@string/second_name&quot;</span> <span style="color: #007700">/&gt;</span>
+            <span style="color: #007700">&lt;/android.support.design.widget.TextInputLayout&gt;</span>
+
+        <span style="color: #007700">&lt;/RelativeLayout&gt;</span>
+</pre></div>
+
+
+      <p>Now we have to add EditText and TextInputLayout in our MainActivity.java </p>
+
+      <div style="background: #ffffff; overflow:auto;width:auto;border:white;border-width:.0em .0em .0em .0em;padding:.0em .0em"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">private</span> TextInputLayout firstNameLayout<span style="color: #333333">,</span> secondNameLayout<span style="color: #333333">;</span>
+<span style="color: #008800; font-weight: bold">private</span> EditText firstName<span style="color: #333333">,</span> surName<span style="color: #333333">;</span>
+</pre></div>
+
+
+      <p>and initialize them at the end of the onCreate method:</p>
+
+      <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:white;border-width:.0em .0em .0em .0em;padding:.0em .0em"><pre style="margin: 0; line-height: 125%">firstNameLayout <span style="color: #333333">=</span> <span style="color: #333333">(</span>TextInputLayout<span style="color: #333333">)</span> findViewById<span style="color: #333333">(</span>R<span style="color: #333333">.</span><span style="color: #0000CC">id</span><span style="color: #333333">.</span><span style="color: #0000CC">firstNameLayout</span><span style="color: #333333">);</span>
+secondNameLayout <span style="color: #333333">=</span> <span style="color: #333333">(</span>TextInputLayout<span style="color: #333333">)</span> findViewById<span style="color: #333333">(</span>R<span style="color: #333333">.</span><span style="color: #0000CC">id</span><span style="color: #333333">.</span><span style="color: #0000CC">secondNameLayout</span><span style="color: #333333">);</span>
+firstName <span style="color: #333333">=</span> <span style="color: #333333">(</span>EditText<span style="color: #333333">)</span> findViewById<span style="color: #333333">(</span>R<span style="color: #333333">.</span><span style="color: #0000CC">id</span><span style="color: #333333">.</span><span style="color: #0000CC">firstName</span><span style="color: #333333">);</span>
+surName <span style="color: #333333">=</span> <span style="color: #333333">(</span>EditText<span style="color: #333333">)</span> findViewById<span style="color: #333333">(</span>R<span style="color: #333333">.</span><span style="color: #0000CC">id</span><span style="color: #333333">.</span><span style="color: #0000CC">surName</span><span style="color: #333333">);</span>
+</pre></div>
+
+<br/>
       <ul>
-        <li>In our MainActivity.java we’ll now add a member field for the EditText:</li>
+        <li>Next, we’ll add a method that grabs the text from the input and saves it within our app :</li>
       </ul>
 
-      <div class="highlight highlight-java">
-        <pre>
-          <span class="pl-smi">EditText</span> mEditText;</pre>
-      </div>
+      <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:white;border-width:.0em .0em .0em .0em;padding:.0em .0em"><pre style="margin: 0; line-height: 125%"> <span style="color: #008800; font-weight: bold">private</span> <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">storeValues</span><span style="color: #333333">(</span>View view<span style="color: #333333">)</span> <span style="color: #333333">{</span>
+        <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>firstName<span style="color: #333333">.</span><span style="color: #0000CC">getText</span><span style="color: #333333">().</span><span style="color: #0000CC">toString</span><span style="color: #333333">().</span><span style="color: #0000CC">trim</span><span style="color: #333333">().</span><span style="color: #0000CC">length</span><span style="color: #333333">()</span> <span style="color: #333333">==</span> <span style="color: #0000DD; font-weight: bold">0</span><span style="color: #333333">)</span> <span style="color: #333333">{</span>
+            firstNameLayout<span style="color: #333333">.</span><span style="color: #0000CC">setError</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;First Name is required*&quot;</span><span style="color: #333333">);</span>
+            <span style="color: #008800; font-weight: bold">return</span><span style="color: #333333">;</span>
+        <span style="color: #333333">}</span> <span style="color: #008800; font-weight: bold">else</span> <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>surName<span style="color: #333333">.</span><span style="color: #0000CC">getText</span><span style="color: #333333">().</span><span style="color: #0000CC">toString</span><span style="color: #333333">().</span><span style="color: #0000CC">trim</span><span style="color: #333333">().</span><span style="color: #0000CC">length</span><span style="color: #333333">()</span> <span style="color: #333333">==</span> <span style="color: #0000DD; font-weight: bold">0</span><span style="color: #333333">)</span> <span style="color: #333333">{</span>
+            secondNameLayout<span style="color: #333333">.</span><span style="color: #0000CC">setError</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;Surname is required*&quot;</span><span style="color: #333333">);</span>
+            <span style="color: #008800; font-weight: bold">return</span><span style="color: #333333">;</span>
+        <span style="color: #333333">}</span> <span style="color: #008800; font-weight: bold">else</span> <span style="color: #333333">{</span>
+            SharedPreferences prefs <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">this</span><span style="color: #333333">.</span><span style="color: #0000CC">getSharedPreferences</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;stored&quot;</span><span style="color: #333333">,</span> MODE_PRIVATE<span style="color: #333333">);</span>
+            SharedPreferences<span style="color: #333333">.</span><span style="color: #0000CC">Editor</span> edit <span style="color: #333333">=</span> prefs<span style="color: #333333">.</span><span style="color: #0000CC">edit</span><span style="color: #333333">();</span>
+            edit<span style="color: #333333">.</span><span style="color: #0000CC">putString</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;firstname&quot;</span><span style="color: #333333">,</span> firstName<span style="color: #333333">.</span><span style="color: #0000CC">getText</span><span style="color: #333333">().</span><span style="color: #0000CC">toString</span><span style="color: #333333">());</span>
+            edit<span style="color: #333333">.</span><span style="color: #0000CC">putString</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;surname&quot;</span><span style="color: #333333">,</span> surName<span style="color: #333333">.</span><span style="color: #0000CC">getText</span><span style="color: #333333">().</span><span style="color: #0000CC">toString</span><span style="color: #333333">());</span>
+            edit<span style="color: #333333">.</span><span style="color: #0000CC">apply</span><span style="color: #333333">();</span>
+            Snackbar<span style="color: #333333">.</span><span style="color: #0000CC">make</span><span style="color: #333333">(</span>view<span style="color: #333333">,</span> <span style="background-color: #fff0f0">&quot;Details Saved!&quot;</span><span style="color: #333333">,</span> Snackbar<span style="color: #333333">.</span><span style="color: #0000CC">LENGTH_LONG</span><span style="color: #333333">)</span>
+                    <span style="color: #333333">.</span><span style="color: #0000CC">setAction</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;Clear&quot;</span><span style="color: #333333">,</span> <span style="color: #008800; font-weight: bold">new</span> View<span style="color: #333333">.</span><span style="color: #0000CC">OnClickListener</span><span style="color: #333333">()</span> <span style="color: #333333">{</span>
+                        <span style="color: #555555; font-weight: bold">@Override</span>
+                        <span style="color: #008800; font-weight: bold">public</span> <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">onClick</span><span style="color: #333333">(</span>View v<span style="color: #333333">)</span> <span style="color: #333333">{</span>
+                            clearValues<span style="color: #333333">();</span>
+                            setStoredValues<span style="color: #333333">();</span>
+                        <span style="color: #333333">}</span>
+                    <span style="color: #333333">}).</span><span style="color: #0000CC">show</span><span style="color: #333333">();</span>
+        <span style="color: #333333">}</span>
+    <span style="color: #333333">}</span>
+</pre></div>
 
-      <p>and initialize it at the end of the onCreate method:</p>
-
-      <div class="highlight highlight-java">
-        <pre> mMessageEditText
-          <span class="pl-k">=</span> (
-          <span class="pl-smi">EditText</span>)
-          <span class="pl-v">this</span>
-          <span class="pl-k">.</span>findViewById(
-          <span class="pl-smi">R</span>
-          <span class="pl-k">.</span>id
-          <span class="pl-k">.</span>message_text);</pre>
-      </div>
-
+<br/>
       <ul>
-        <li>Next, we’ll add a method that grabs the text from the input and send it to our Firebase database:</li>
+        <li>Next, we’ll add a method that restores the saved values when reopened the app and also clears the data when user request :</li>
       </ul>
 
-      <div class="highlight highlight-java">
-        <pre>
-          <span class="pl-k">public</span>
-          <span class="pl-k">void</span> onSendButtonClick(
-          <span class="pl-smi">View</span> v) {
-          <span class="pl-smi">String</span> message
-          <span class="pl-k">=</span> mMessageEdit
-          <span class="pl-k">.</span>getText()
-          <span class="pl-k">.</span>toString();
-          <span class="pl-k">Map&lt;
-            <span class="pl-smi">String</span>,
-            <span class="pl-smi">Object</span>&gt;</span> values
-          <span class="pl-k">=</span>
-          <span class="pl-k">new</span>
-          <span class="pl-k">HashMap&lt;&gt;</span>(); values
-          <span class="pl-k">.</span>put(
-          <span class="pl-s">
-            <span class="pl-pds">"</span>name
-            <span class="pl-pds">"</span>
-          </span>,
-          <span class="pl-s">
-            <span class="pl-pds">"</span>puf
-            <span class="pl-pds">"</span>
-          </span>); values
-          <span class="pl-k">.</span>put(
-          <span class="pl-s">
-            <span class="pl-pds">"</span>message
-            <span class="pl-pds">"</span>
-          </span>, message); mFirebaseRef
-          <span class="pl-k">.</span>push()
-          <span class="pl-k">.</span>setValue(values); mMessageEdit
-          <span class="pl-k">.</span>setText(
-          <span class="pl-s">
-            <span class="pl-pds">"</span>
-            <span class="pl-pds">"</span>
-          </span>); }
-        </pre>
-      </div>
+      <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:white;border-width:.0em .0em .0em .0em;padding:.0em .0em"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">private</span> <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">setStoredValues</span><span style="color: #333333">()</span> <span style="color: #333333">{</span>
+        SharedPreferences prefs <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">this</span><span style="color: #333333">.</span><span style="color: #0000CC">getSharedPreferences</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;stored&quot;</span><span style="color: #333333">,</span> MODE_PRIVATE<span style="color: #333333">);</span>
+        firstName<span style="color: #333333">.</span><span style="color: #0000CC">setText</span><span style="color: #333333">(</span>prefs<span style="color: #333333">.</span><span style="color: #0000CC">getString</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;firstname&quot;</span><span style="color: #333333">,</span> <span style="background-color: #fff0f0">&quot;&quot;</span><span style="color: #333333">));</span>
+        surName<span style="color: #333333">.</span><span style="color: #0000CC">setText</span><span style="color: #333333">(</span>prefs<span style="color: #333333">.</span><span style="color: #0000CC">getString</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;surname&quot;</span><span style="color: #333333">,</span> <span style="background-color: #fff0f0">&quot;&quot;</span><span style="color: #333333">));</span>
+    <span style="color: #333333">}</span>
+
+    <span style="color: #008800; font-weight: bold">private</span> <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">clearValues</span><span style="color: #333333">()</span> <span style="color: #333333">{</span>
+        SharedPreferences prefs <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">this</span><span style="color: #333333">.</span><span style="color: #0000CC">getSharedPreferences</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;stored&quot;</span><span style="color: #333333">,</span> MODE_PRIVATE<span style="color: #333333">);</span>
+        SharedPreferences<span style="color: #333333">.</span><span style="color: #0000CC">Editor</span> edit <span style="color: #333333">=</span> prefs<span style="color: #333333">.</span><span style="color: #0000CC">edit</span><span style="color: #333333">();</span>
+        edit<span style="color: #333333">.</span><span style="color: #0000CC">putString</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;firstname&quot;</span><span style="color: #333333">,</span> <span style="background-color: #fff0f0">&quot;&quot;</span><span style="color: #333333">);</span>
+        edit<span style="color: #333333">.</span><span style="color: #0000CC">putString</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;surname&quot;</span><span style="color: #333333">,</span> <span style="background-color: #fff0f0">&quot;&quot;</span><span style="color: #333333">);</span>
+        edit<span style="color: #333333">.</span><span style="color: #0000CC">putString</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;address&quot;</span><span style="color: #333333">,</span> <span style="background-color: #fff0f0">&quot;&quot;</span><span style="color: #333333">);</span>
+        edit<span style="color: #333333">.</span><span style="color: #0000CC">apply</span><span style="color: #333333">();</span>
+    <span style="color: #333333">}</span>
+</pre></div>
+
+
 
       <p>You will have to import the packages for some of these classes. Android Studio will tell you where to import them from.</p>
 
       <ul>
         <li>
-          <p>Here we grab the message from the EditText, add it to a Map, and send it off to Firebase. We’ll look at a way to replace that Map with something more type-safe in the next section, but for now this will work. Also note that we hard-coded our
-            user name for the moment. We’ll use Firebase Authentication to make this dynamic in the last section of this code lab.</p>
+          <p>Here we grab the message from the EditText as the user clicks on the fab and stores the values into app after performing the check that the input fields are non-empty.</p>
         </li>
         <li>
-          <p>Now we'll wire up the onSendButtonClick method to the button in main_acitivity.xml by adding this attribute to the button:</p>
+          <p>Now we'll call the fab to trigger the process :</p>
         </li>
       </ul>
 
-      <pre>
-        <code> android:onClick="onSendButtonClick"
-        </code>
-      </pre>
+      <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:white;border-width:.0em .0em .0em .0em;padding:.0em .0em"><pre style="margin: 0; line-height: 125%">fab<span style="color: #333333">.</span><span style="color: #0000CC">setOnClickListener</span><span style="color: #333333">(</span><span style="color: #008800; font-weight: bold">new</span> View<span style="color: #333333">.</span><span style="color: #0000CC">OnClickListener</span><span style="color: #333333">()</span> <span style="color: #333333">{</span>
+            <span style="color: #555555; font-weight: bold">@Override</span>
+            <span style="color: #008800; font-weight: bold">public</span> <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">onClick</span><span style="color: #333333">(</span>View view<span style="color: #333333">)</span> <span style="color: #333333">{</span>
+                storeValues<span style="color: #333333">(</span>view<span style="color: #333333">);</span>
+            <span style="color: #333333">}</span>
+        <span style="color: #333333">});</span>
+</pre></div>
 
+<br />
       <ul>
         <li>
-          <p>If you now run the application in the emulator, you will see an input field with a Send button that sends the message to Firebase. Open the URL of your Firebase database, and you’ll see it light up green as you add new messages.</p>
+          <p>If you now run the application in the emulator, you will see an input fields with a check mark fab button below.</p>
         </li>
         <li>
-          <p>Open the Data tab in the Firebase Dashboard of your app. You’ll see it light up green as you add new messages. Admit it, this is pretty cool!</p>
+          <p>Try inputting the values and store and restore those values. Also try saving with a blank field to see error message.</p>
         </li>
       </ul>
 
-      <p>Now that we can send messages to Firebase, it is time for the next step: making the messages show up in our Android app in realtime.</p>
+
 
       <h3>
-        <a id="show-the-existing-and-new-messages" class="anchor" href="#show-the-existing-and-new-messages" aria-hidden="true">
+        <a id="adding-nav-view" class="anchor" href="#adding-nav-view" aria-hidden="true">
           <span class="octicon octicon-link"></span>
-        </a>Show the (existing and new) messages</h3>
+        </a>Adding Navigation Drawer</h3>
 
-      <p>Duration: 0:20</p>
 
-      <p>A chat app that doesn’t show existing messages is not very useful. So in this step we’ll add a list of the existing messages to our Android app. At the end of this section we’ll have a fully functional chat app.</p>
+      <p>To make an applicaion more browsable with less user input we use Navigation Drawer. This facilitates the user to access different categories in same place.</p>
 
-      <p>Let's take this in chunks: first you'll build a new layout that we use to display each message, then you'll create a Java class to represent each message and finally we'll get the message from Firebase and put them into a ListView.</p>
+      To implement navigation view we need to setup few files :<br />
+      <br />
+      1) drawer_viewer.xml - which will be placed under res &gt;menu. It will contain all the items to be displayed in the drawer. Now we can directly make menu items and add them into drawer we will make.<br />
+      2) content_main.xml - which will contain the layout of drawer.<br />
+      <br />
+      drawer_viewer.xml :<br />
+
+<div style="background: #ffffff; overflow:auto;width:auto;border:white;border-width:.0em .0em .0em .0em;padding:.0em .0em"><pre style="margin: 0; line-height: 125%"><span style="color: #007700">&lt;menu</span> <span style="color: #0000CC">xmlns:android=</span><span style="background-color: #fff0f0">&quot;http://schemas.android.com/apk/res/android&quot;</span><span style="color: #007700">&gt;</span>
+
+    <span style="color: #007700">&lt;group</span> <span style="color: #0000CC">android:checkableBehavior=</span><span style="background-color: #fff0f0">&quot;single&quot;</span><span style="color: #007700">&gt;</span>
+        <span style="color: #007700">&lt;item</span>
+            <span style="color: #0000CC">android:id=</span><span style="background-color: #fff0f0">&quot;@+id/nav_home&quot;</span>
+            <span style="color: #0000CC">android:icon=</span><span style="background-color: #fff0f0">&quot;@android:drawable/radiobutton_off_background&quot;</span>
+            <span style="color: #0000CC">android:title=</span><span style="background-color: #fff0f0">&quot;@string/home&quot;</span> <span style="color: #007700">/&gt;</span>
+        <span style="color: #007700">&lt;item</span>
+            <span style="color: #0000CC">android:id=</span><span style="background-color: #fff0f0">&quot;@+id/nav_category1&quot;</span>
+            <span style="color: #0000CC">android:icon=</span><span style="background-color: #fff0f0">&quot;@android:drawable/radiobutton_off_background&quot;</span>
+            <span style="color: #0000CC">android:title=</span><span style="background-color: #fff0f0">&quot;@string/category1&quot;</span> <span style="color: #007700">/&gt;</span>
+        <span style="color: #007700">&lt;item</span>
+            <span style="color: #0000CC">android:id=</span><span style="background-color: #fff0f0">&quot;@+id/nav_category2&quot;</span>
+            <span style="color: #0000CC">android:icon=</span><span style="background-color: #fff0f0">&quot;@android:drawable/radiobutton_off_background&quot;</span>
+            <span style="color: #0000CC">android:title=</span><span style="background-color: #fff0f0">&quot;@string/category2&quot;</span> <span style="color: #007700">/&gt;</span>
+    <span style="color: #007700">&lt;/group&gt;</span>
+
+
+    <span style="color: #007700">&lt;item</span> <span style="color: #0000CC">android:title=</span><span style="background-color: #fff0f0">&quot;@string/subItems&quot;</span><span style="color: #007700">&gt;</span>
+        <span style="color: #007700">&lt;menu&gt;</span>
+            <span style="color: #007700">&lt;item</span>
+                <span style="color: #0000CC">android:icon=</span><span style="background-color: #fff0f0">&quot;@android:drawable/radiobutton_off_background&quot;</span>
+                <span style="color: #0000CC">android:title=</span><span style="background-color: #fff0f0">&quot;@string/Subitem&quot;</span> <span style="color: #007700">/&gt;</span>
+            <span style="color: #007700">&lt;item</span>
+                <span style="color: #0000CC">android:icon=</span><span style="background-color: #fff0f0">&quot;@android:drawable/radiobutton_off_background&quot;</span>
+                <span style="color: #0000CC">android:title=</span><span style="background-color: #fff0f0">&quot;@string/Subitem&quot;</span> <span style="color: #007700">/&gt;</span>
+            <span style="color: #007700">&lt;item</span>
+                <span style="color: #0000CC">android:icon=</span><span style="background-color: #fff0f0">&quot;@android:drawable/radiobutton_off_background&quot;</span>
+                <span style="color: #0000CC">android:title=</span><span style="background-color: #fff0f0">&quot;@string/Subitem&quot;</span> <span style="color: #007700">/&gt;</span>
+        <span style="color: #007700">&lt;/menu&gt;</span>
+    <span style="color: #007700">&lt;/item&gt;</span>
+
+<span style="color: #007700">&lt;/menu&gt;</span>
+</pre></div>
+<br />
 
       <ul>
         <li>
-          <p>Each chat message has the same layout. So we’ll create a new layout XML file for the messages.</p>
+          <p>Each group contains different items and each menu contains differnt sub items.</p>
         </li>
+
+        content_main.xml :<br />
+        <br />
+
+
+      <div style="background: #ffffff; overflow:auto;width:auto;border:white;border-width:.0em .0em .0em .0em;padding:.0em .0em"><pre style="margin: 0; line-height: 125%"><span style="color: #007700">&lt;android.support.v4.widget.DrawerLayout</span> <span style="color: #0000CC">xmlns:android=</span><span style="background-color: #fff0f0">&quot;http://schemas.android.com/apk/res/android&quot;</span>
+    <span style="color: #0000CC">xmlns:app=</span><span style="background-color: #fff0f0">&quot;http://schemas.android.com/apk/res-auto&quot;</span>
+    <span style="color: #0000CC">android:id=</span><span style="background-color: #fff0f0">&quot;@+id/drawer_layout&quot;</span>
+    <span style="color: #0000CC">android:layout_width=</span><span style="background-color: #fff0f0">&quot;match_parent&quot;</span>
+    <span style="color: #0000CC">android:layout_height=</span><span style="background-color: #fff0f0">&quot;match_parent&quot;</span>
+    <span style="color: #0000CC">android:fitsSystemWindows=</span><span style="background-color: #fff0f0">&quot;true&quot;</span><span style="color: #007700">&gt;</span>
+
+    <span style="color: #007700">&lt;include</span> <span style="color: #0000CC">layout=</span><span style="background-color: #fff0f0">&quot;@layout/activity_main&quot;</span> <span style="color: #007700">/&gt;</span>
+
+    <span style="color: #007700">&lt;android.support.design.widget.NavigationView</span>
+        <span style="color: #0000CC">android:id=</span><span style="background-color: #fff0f0">&quot;@+id/nav_view&quot;</span>
+        <span style="color: #0000CC">android:layout_width=</span><span style="background-color: #fff0f0">&quot;wrap_content&quot;</span>
+        <span style="color: #0000CC">android:layout_height=</span><span style="background-color: #fff0f0">&quot;match_parent&quot;</span>
+        <span style="color: #0000CC">android:layout_gravity=</span><span style="background-color: #fff0f0">&quot;start&quot;</span>
+        <span style="color: #0000CC">android:fitsSystemWindows=</span><span style="background-color: #fff0f0">&quot;true&quot;</span>
+        <span style="color: #0000CC">app:headerLayout=</span><span style="background-color: #fff0f0">&quot;@layout/nav_header&quot;</span>
+        <span style="color: #0000CC">app:menu=</span><span style="background-color: #fff0f0">&quot;@menu/drawer_view&quot;</span> <span style="color: #007700">/&gt;</span>
+
+
+<span style="color: #007700">&lt;/android.support.v4.widget.DrawerLayout&gt;</span>
+</pre></div>
+<br />
+
         <li>
-          <p>Create a new layout file message_layout.xml</p>
-        </li>
-        <li>
-          <p>in the layout XML, change the orientation of the LinearLayout to horizontal, so the we can have the user name on the left and the message on the right of it.</p>
+          <p>In the XMl we added Navigation View within Drawer View to display menu items.</p>
         </li>
       </ul>
 
-      <pre>
-        <code> &lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="match_parent"&gt;
-        </code>
-      </pre>
+<p>Now we will add the nav_header.xml file to display the header in the drawer</p>
 
+<div style="background: #ffffff; overflow:auto;width:auto;border:white;border-width:.0em .0em .0em .0em;padding:.0em .0em"><pre style="margin: 0; line-height: 125%"><span style="color: #007700">&lt;LinearLayout</span> <span style="color: #0000CC">xmlns:android=</span><span style="background-color: #fff0f0">&quot;http://schemas.android.com/apk/res/android&quot;</span>
+    <span style="color: #0000CC">android:layout_width=</span><span style="background-color: #fff0f0">&quot;match_parent&quot;</span>
+    <span style="color: #0000CC">android:layout_height=</span><span style="background-color: #fff0f0">&quot;192dp&quot;</span>
+    <span style="color: #0000CC">android:background=</span><span style="background-color: #fff0f0">&quot;?attr/colorPrimaryDark&quot;</span>
+    <span style="color: #0000CC">android:gravity=</span><span style="background-color: #fff0f0">&quot;bottom&quot;</span>
+    <span style="color: #0000CC">android:orientation=</span><span style="background-color: #fff0f0">&quot;vertical&quot;</span>
+    <span style="color: #0000CC">android:padding=</span><span style="background-color: #fff0f0">&quot;16dp&quot;</span>
+    <span style="color: #0000CC">android:theme=</span><span style="background-color: #fff0f0">&quot;@style/ThemeOverlay.AppCompat.Dark&quot;</span><span style="color: #007700">&gt;</span>
+
+    <span style="color: #007700">&lt;TextView</span>
+        <span style="color: #0000CC">android:layout_width=</span><span style="background-color: #fff0f0">&quot;match_parent&quot;</span>
+        <span style="color: #0000CC">android:layout_height=</span><span style="background-color: #fff0f0">&quot;wrap_content&quot;</span>
+        <span style="color: #0000CC">android:text=</span><span style="background-color: #fff0f0">&quot;@string/app_name&quot;</span>
+        <span style="color: #0000CC">android:textAppearance=</span><span style="background-color: #fff0f0">&quot;@style/TextAppearance.AppCompat.Body1&quot;</span> <span style="color: #007700">/&gt;</span>
+
+<span style="color: #007700">&lt;/LinearLayout&gt;</span>
+</pre></div>
+
+
+<br />
       <ul>
-        <li>add two TextView controls to the layout: one for the username and one for the chat message:</li>
+        <li>Now we need to implement navigation view in MainActivity.java : </li>
       </ul>
 
-      <pre>
-        <code> &lt;TextView android:id="@+id/username_text_view" android:text="Username" android:textStyle="bold" android:gravity="end" android:layout_width="0dp" android:layout_weight="3" android:layout_height="wrap_content" android:padding="10dp"/&gt; &lt;TextView
-          android:id="@+id/message_text_view" android:text="Message" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="10" android:paddingLeft="0dp" android:paddingRight="10dp" android:paddingTop="10dp" android:paddingBottom="10dp"/&gt;
-        </code>
-      </pre>
+      <p>Now we'll add DrawerLayout :</p>
 
-      <p>Most of these attributes are just there to make the messages look reasonable. So feel free to use your own padding and layout attributes. Just be sure to use the same R.id fields in your code that you specify in the android:id attributes in the
-        XML.
+<div style="background: #ffffff; overflow:auto;width:auto;border:white;border-width:.0em .0em .0em .0em;padding:.0em .0em"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">private</span> DrawerLayout mDrawerLayout<span style="color: #333333">;</span>
+      </pre></div>
+
+      <p>and initialize in the onCreate method:</p>
+
+<div style="background: #ffffff; overflow:auto;width:auto;border:white;border-width:.0em .0em .0em .0em;padding:.0em .0em"><pre style="margin: 0; line-height: 125%">mDrawerLayout <span style="color: #333333">=</span> <span style="color: #333333">(</span>DrawerLayout<span style="color: #333333">)</span> findViewById<span style="color: #333333">(</span>R<span style="color: #333333">.</span><span style="color: #0000CC">id</span><span style="color: #333333">.</span><span style="color: #0000CC">drawer_layout</span><span style="color: #333333">);</span>
+      </pre></div>
+
+      <p>Now we'll make function to make click listener for the menu items in the drawer :
       </p>
 
-      <ul>
-        <li>Now create a class ChatMessage.java that wraps the username and text message:</li>
-      </ul>
+      <div style="background: #ffffff; overflow:auto;width:auto;border:white;border-width:.0em .0em .0em .0em;padding:.0em .0em"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">private</span> <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">setupDrawerContent</span><span style="color: #333333">(</span>NavigationView navigationView<span style="color: #333333">)</span> <span style="color: #333333">{</span>
+              navigationView<span style="color: #333333">.</span><span style="color: #0000CC">setNavigationItemSelectedListener</span><span style="color: #333333">(</span>
+                      <span style="color: #008800; font-weight: bold">new</span> NavigationView<span style="color: #333333">.</span><span style="color: #0000CC">OnNavigationItemSelectedListener</span><span style="color: #333333">()</span> <span style="color: #333333">{</span>
+                          <span style="color: #555555; font-weight: bold">@Override</span>
+                          <span style="color: #008800; font-weight: bold">public</span> <span style="color: #333399; font-weight: bold">boolean</span> <span style="color: #0066BB; font-weight: bold">onNavigationItemSelected</span><span style="color: #333333">(</span>MenuItem menuItem<span style="color: #333333">)</span> <span style="color: #333333">{</span>
+                              menuItem<span style="color: #333333">.</span><span style="color: #0000CC">setChecked</span><span style="color: #333333">(</span><span style="color: #008800; font-weight: bold">true</span><span style="color: #333333">);</span>
+                              Toast<span style="color: #333333">.</span><span style="color: #0000CC">makeText</span><span style="color: #333333">(</span>getApplicationContext<span style="color: #333333">(),</span> <span style="background-color: #fff0f0">&quot;Current selection : &quot;</span> <span style="color: #333333">+</span> menuItem<span style="color: #333333">.</span><span style="color: #0000CC">getTitle</span><span style="color: #333333">(),</span> Toast<span style="color: #333333">.</span><span style="color: #0000CC">LENGTH_SHORT</span><span style="color: #333333">).</span><span style="color: #0000CC">show</span><span style="color: #333333">();</span>
+                              mDrawerLayout<span style="color: #333333">.</span><span style="color: #0000CC">closeDrawers</span><span style="color: #333333">();</span>
+                              <span style="color: #008800; font-weight: bold">return</span> <span style="color: #008800; font-weight: bold">true</span><span style="color: #333333">;</span>
+                          <span style="color: #333333">}</span>
+                      <span style="color: #333333">});</span>
+          <span style="color: #333333">}</span>
+      </pre></div>
 
-      <div class="highlight highlight-java">
-        <pre>
-          <span class="pl-k">public</span>
-          <span class="pl-k">class</span>
-          <span class="pl-en">ChatMessage</span> {
-          <span class="pl-k">private</span>
-          <span class="pl-smi">String</span> name;
-          <span class="pl-k">private</span>
-          <span class="pl-smi">String</span> message;
+      <p>Now we will add Navigation View and call the setup function :<p/>
 
-          <span class="pl-k">public</span>
-          <span class="pl-en">ChatMessage</span>() {
-          <span class="pl-c">// necessary for Firebase's deserializer</span>
-          }
-          <span class="pl-k">public</span>
-          <span class="pl-en">ChatMessage</span>(
-          <span class="pl-smi">String</span>
-          <span class="pl-v">name</span>,
-          <span class="pl-smi">String</span>
-          <span class="pl-v">message</span>) {
-          <span class="pl-v">this</span>
-          <span class="pl-k">.</span>name
-          <span class="pl-k">=</span> name;
-          <span class="pl-v">this</span>
-          <span class="pl-k">.</span>message
-          <span class="pl-k">=</span> message; }
+      <div style="background: #ffffff; overflow:auto;width:auto;border:white;border-width:.0em .0em .0em .0em;padding:.0em .0em"><pre style="margin: 0; line-height: 125%">NavigationView navigationView <span style="color: #333333">=</span> <span style="color: #333333">(</span>NavigationView<span style="color: #333333">)</span> findViewById<span style="color: #333333">(</span>R<span style="color: #333333">.</span><span style="color: #0000CC">id</span><span style="color: #333333">.</span><span style="color: #0000CC">nav_view</span><span style="color: #333333">);</span>
+        <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>navigationView <span style="color: #333333">!=</span> <span style="color: #008800; font-weight: bold">null</span><span style="color: #333333">)</span> <span style="color: #333333">{</span>
+            setupDrawerContent<span style="color: #333333">(</span>navigationView<span style="color: #333333">);</span>
+        <span style="color: #333333">}</span>
+</pre></div>
 
-          <span class="pl-k">public</span>
-          <span class="pl-smi">String</span>
-          <span class="pl-en">getName</span>() {
-          <span class="pl-k">return</span> name; }
 
-          <span class="pl-k">public</span>
-          <span class="pl-smi">String</span>
-          <span class="pl-en">getMessage</span>() {
-          <span class="pl-k">return</span> message; } }
-        </pre>
-      </div>
+      <p>Now we will make the drawer open on clicking the hamburger button : </p>
+      <p>Add the following code in onOptionsItemSelected() function in MainActivity.java : </p>
 
-      <p>As you can see, this is plain-old Java object. But it’s a POJO with some special traits. First ChatMessage follows a JavaBean pattern for its property names. The getName method is a getter for a name property, while getMessage is a getter for a
-        message property. And second, those property names correspond to the ones we’ve been using when we sent messages to Firebase in our onSendButtonClick() function.</p>
+<div style="background: #ffffff; overflow:auto;width:auto;border:white;border-width:.0em .0em .0em .0em;padding:.0em .0em"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>id <span style="color: #333333">==</span> android<span style="color: #333333">.</span><span style="color: #0000CC">R</span><span style="color: #333333">.</span><span style="color: #0000CC">id</span><span style="color: #333333">.</span><span style="color: #0000CC">home</span><span style="color: #333333">)</span> <span style="color: #333333">{</span>
+            mDrawerLayout<span style="color: #333333">.</span><span style="color: #0000CC">openDrawer</span><span style="color: #333333">(</span>GravityCompat<span style="color: #333333">.</span><span style="color: #0000CC">START</span><span style="color: #333333">);</span>
+        <span style="color: #333333">}</span>
+</pre></div>
 
-      <p>If you end up making this ChatMessage an inner class of another class, you must make it static: public static class ChatMessage.</p>
-
-      <ul>
-        <li>
-          <p>With the layout for the message specified and their structure defined in a class, now you need to make a space for them in the main_activity.xml</p>
-        </li>
-        <li>
-          <p>Add a ListView with android:id="<a href="https://github.com/android" class="user-mention">@android</a>:id/list" above the LinearLayout:</p>
-        </li>
-      </ul>
-
-      <pre>
-        <code> &lt;ListView android:id="@android:id/list" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_above="@+id/footer"/&gt;
-        </code>
-      </pre>
-
-      <p>This is the container that all messages will be added to: one message_layout for each ChatMessage.
-        <br> The id value is very important here, since Android uses it to find the ListView. So make sure to enter it exactly as specified: <a href="https://github.com/android" class="user-mention">@android</a>:id/list.</p>
-
-      <ul>
-        <li>
-          <p>Now download FirebaseListAdapter.java from <a href="https://github.com/rohanraarora/Firebase-Codelab/blob/master/app/src/main/java/com/gdgnd/firebasecodelab/FirebaseListAdapter.java">https://github.com/rohanraarora/Firebase-Codelab/blob/master/app/src/main/java/com/gdgnd/firebasecodelab/FirebaseListAdapter.java</a>            and add it to your project. The FirebaseListAdapter class adapts a Firebase collection so that it becomes usable in an Android ListView. To add it to your app, add a new file to your application called FirebaseListAdapter and copy the Java
-            code from the link above into that file. Don't forget to change the package name in the first line to match your project.</p>
-        </li>
-        <li>
-          <p>Make the MainActivity class descend from ListActivity. This is a built-in Android base-class. By deriving from this, our activity will automatically have access to the ListView we added to the layout:</p>
-        </li>
-      </ul>
-
-      <div class="highlight highlight-java">
-        <pre>
-          <span class="pl-k">public</span>
-          <span class="pl-k">class</span>
-          <span class="pl-en">MainActivity</span>
-          <span class="pl-k">extends</span>
-          <span class="pl-e">ListActivity</span> {</pre>
-      </div>
-
-      <ul>
-        <li>Now we'll make everything come together, by adding this to the onCreate method of our MainActivity:</li>
-      </ul>
-
-      <div class="highlight highlight-java">
-        <pre> mListAdapter
-          <span class="pl-k">=</span>
-          <span class="pl-k">new</span>
-          <span class="pl-k">FirebaseListAdapter&lt;
-            <span class="pl-smi">ChatMessage</span>&gt;</span>(mFirebaseRef,
-          <span class="pl-smi">ChatMessage</span>
-          <span class="pl-k">.</span>class,
-          <span class="pl-smi">R</span>
-          <span class="pl-k">.</span>layout
-          <span class="pl-k">.</span>message_layout,
-          <span class="pl-v">this</span>) {
-          <span class="pl-k">@Override</span>
-          <span class="pl-k">protected</span>
-          <span class="pl-k">void</span>
-          <span class="pl-en">populateView</span>(
-          <span class="pl-smi">View</span>
-          <span class="pl-v">v</span>,
-          <span class="pl-smi">ChatMessage</span>
-          <span class="pl-v">model</span>) { ((
-          <span class="pl-smi">TextView</span>)v
-          <span class="pl-k">.</span>findViewById(
-          <span class="pl-smi">R</span>
-          <span class="pl-k">.</span>id
-          <span class="pl-k">.</span>username_text_view))
-          <span class="pl-k">.</span>setText(model
-          <span class="pl-k">.</span>getName()); ((
-          <span class="pl-smi">TextView</span>)v
-          <span class="pl-k">.</span>findViewById(
-          <span class="pl-smi">R</span>
-          <span class="pl-k">.</span>id
-          <span class="pl-k">.</span>message_text_view))
-          <span class="pl-k">.</span>setText(model
-          <span class="pl-k">.</span>getMessage()); } }; setListAdapter(mListAdapter);
-        </pre>
-      </div>
-
-      <p>The FirebaseListAdapter maps the data from your Firebase database into the ListView that you added to the layout. It creates a new instance of your message_layout for each ChatMessage and calls the populateView method. You override this method and
-        put the name and message in the correct subviews.</p>
-
-      <ul>
-        <li>
-          <p>Don't worry, the hardest part is behind us now. All that is left in this step is some clean-up. But before that, run your app and see that it shows all existing messages. And if you send a new message, it shows up in the emulator and in your
-            Firebase dashboard.
-          </p>
-        </li>
-        <li>
-          <p>The cleanup is minor, but it's important to keep our code as readable as possible at all times. Remember that onSendButtonClick method that we wrote in step 5? That use of a Map looked a bit messy. Now that we have a ChatMessage class, we can
-            make it much more readable:</p>
-        </li>
-      </ul>
-
-      <div class="highlight highlight-java">
-        <pre>
-          <span class="pl-k">public</span>
-          <span class="pl-k">void</span> onSendButtonClick(
-          <span class="pl-smi">View</span> v) {
-          <span class="pl-smi">String</span> message
-          <span class="pl-k">=</span> mMessageEdit
-          <span class="pl-k">.</span>getText()
-          <span class="pl-k">.</span>toString(); mFirebaseRef
-          <span class="pl-k">.</span>push()
-          <span class="pl-k">.</span>setValue(
-          <span class="pl-k">new</span>
-          <span class="pl-smi">ChatMessage</span>(
-          <span class="pl-s">
-            <span class="pl-pds">"</span>puf
-            <span class="pl-pds">"</span>
-          </span>, message)); mMessageEdit
-          <span class="pl-k">.</span>setText(
-          <span class="pl-s">
-            <span class="pl-pds">"</span>
-            <span class="pl-pds">"</span>
-          </span>); }
-        </pre>
-      </div>
-
-      <p>In this section we made our app show the chat messages. It was a lot of work, but in the end you can see that the Java code is not that big, Thanks to firebase.</p>
 
       <h3>
-        <a id="enable-login" class="anchor" href="#enable-login" aria-hidden="true">
+        <a id="adding-textwatcher" class="anchor" href="#adding-textwatcher" aria-hidden="true">
           <span class="octicon octicon-link"></span>
-        </a>Enable login</h3>
+        </a>Adding checks on EditText</h3>
 
-      <p>Duration: 0:15 As a final step, we're going to allow the users of our app to log in using email and password.</p>
+      <p>Now we saw that when the EditText gets error message when we try to save an empty string, the error message doesnot dissappear when it gets filled. So we need to add a check on EditText to monitor it's current string value. Fot that we will use TextWatcher : </p>
 
-      <ul>
-        <li>First add a button to the top right of activity_main.xml</li>
-      </ul>
+<div style="background: #ffffff; overflow:auto;width:auto;border:white;border-width:.0em .0em .0em .0em;padding:.0em .0em"><pre style="margin: 0; line-height: 125%">TextWatcher textWatcher <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">new</span> TextWatcher<span style="color: #333333">()</span> <span style="color: #333333">{</span>
+            <span style="color: #555555; font-weight: bold">@Override</span>
+            <span style="color: #008800; font-weight: bold">public</span> <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">beforeTextChanged</span><span style="color: #333333">(</span>CharSequence s<span style="color: #333333">,</span> <span style="color: #333399; font-weight: bold">int</span> start<span style="color: #333333">,</span> <span style="color: #333399; font-weight: bold">int</span> count<span style="color: #333333">,</span> <span style="color: #333399; font-weight: bold">int</span> after<span style="color: #333333">)</span> <span style="color: #333333">{</span>
 
-      <pre>
-        <code> &lt;Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Login" android:id="@+id/login" android:layout_alignParentTop="true" android:layout_alignParentEnd="true" android:onClick="onLoginButtonClick" /&gt;
-        </code>
-      </pre>
+            <span style="color: #333333">}</span>
 
-      <p>Note that the button refers to an onLoginButtonClick method, which you'll create in a few minutes.</p>
+            <span style="color: #555555; font-weight: bold">@Override</span>
+            <span style="color: #008800; font-weight: bold">public</span> <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">onTextChanged</span><span style="color: #333333">(</span>CharSequence s<span style="color: #333333">,</span> <span style="color: #333399; font-weight: bold">int</span> start<span style="color: #333333">,</span> <span style="color: #333399; font-weight: bold">int</span> before<span style="color: #333333">,</span> <span style="color: #333399; font-weight: bold">int</span> count<span style="color: #333333">)</span> <span style="color: #333333">{</span>
+                fab<span style="color: #333333">.</span><span style="color: #0000CC">show</span><span style="color: #333333">();</span>
+                <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>surName<span style="color: #333333">.</span><span style="color: #0000CC">getText</span><span style="color: #333333">().</span><span style="color: #0000CC">toString</span><span style="color: #333333">().</span><span style="color: #0000CC">trim</span><span style="color: #333333">().</span><span style="color: #0000CC">length</span><span style="color: #333333">()</span> <span style="color: #333333">&gt;</span> <span style="color: #0000DD; font-weight: bold">0</span><span style="color: #333333">)</span> <span style="color: #333333">{</span>
+                    secondNameLayout<span style="color: #333333">.</span><span style="color: #0000CC">setError</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;&quot;</span><span style="color: #333333">);</span>
+                <span style="color: #333333">}</span>
+                <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>firstName<span style="color: #333333">.</span><span style="color: #0000CC">getText</span><span style="color: #333333">().</span><span style="color: #0000CC">toString</span><span style="color: #333333">().</span><span style="color: #0000CC">trim</span><span style="color: #333333">().</span><span style="color: #0000CC">length</span><span style="color: #333333">()</span> <span style="color: #333333">&gt;</span> <span style="color: #0000DD; font-weight: bold">0</span><span style="color: #333333">)</span> <span style="color: #333333">{</span>
+                    firstNameLayout<span style="color: #333333">.</span><span style="color: #0000CC">setError</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;&quot;</span><span style="color: #333333">);</span>
+                <span style="color: #333333">}</span>
+            <span style="color: #333333">}</span>
 
-      <ul>
-        <li>Now create a new layout called dialog_signin.xml, which we'll use to model the body of the sign-in dialog</li>
-      </ul>
+            <span style="color: #555555; font-weight: bold">@Override</span>
+            <span style="color: #008800; font-weight: bold">public</span> <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">afterTextChanged</span><span style="color: #333333">(</span>Editable s<span style="color: #333333">)</span> <span style="color: #333333">{</span>
 
-      <pre>
-        <code> &lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"&gt; &lt;EditText android:id="@+id/email" android:inputType="textEmailAddress"
-          android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="16dp" android:layout_marginLeft="4dp" android:layout_marginRight="4dp" android:layout_marginBottom="4dp" android:hint="Email" /&gt; &lt;EditText
-          android:id="@+id/password" android:inputType="textPassword" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:layout_marginLeft="4dp" android:layout_marginRight="4dp" android:layout_marginBottom="16dp"
-          android:hint="Password"/&gt; &lt;/LinearLayout&gt;
-        </code>
-      </pre>
+            <span style="color: #333333">}</span>
+        <span style="color: #333333">};</span>
 
-      <p>So we have two EditText controls under each other. The rest of the popup will be handled by a stock Android dialog. Since your app will display the sign-in dialog as a popup, add the handling to MainActivity.java:</p>
+        firstName<span style="color: #333333">.</span><span style="color: #0000CC">addTextChangedListener</span><span style="color: #333333">(</span>textWatcher<span style="color: #333333">);</span>
+        surName<span style="color: #333333">.</span><span style="color: #0000CC">addTextChangedListener</span><span style="color: #333333">(</span>textWatcher<span style="color: #333333">);</span>
+</pre></div>
 
-      <div class="highlight highlight-java">
-        <pre>
-          <span class="pl-k">public</span>
-          <span class="pl-k">void</span> onLoginButtonClick(
-          <span class="pl-smi">View</span> v) {
-          <span class="pl-smi">AlertDialog</span>
-          <span class="pl-k">.</span>
-          <span class="pl-smi">Builder</span> builder
-          <span class="pl-k">=</span>
-          <span class="pl-k">new</span>
-          <span class="pl-smi">AlertDialog</span>.
-          <span class="pl-smi">Builder</span>(
-          <span class="pl-v">this</span>); builder
 
-          <span class="pl-k">.</span>setMessage(
-          <span class="pl-s">
-            <span class="pl-pds">"</span>Enter your email address and password
-            <span class="pl-pds">"</span>
-          </span>) .setTitle(
-          <span class="pl-s">
-            <span class="pl-pds">"</span>Log in
-            <span class="pl-pds">"</span>
-          </span>);
+        <p>So it contstantly monitors the EditText and we add the listeners to the EditText.</p>
 
-          <span class="pl-smi">LayoutInflater</span> inflater
-          <span class="pl-k">=</span>
-          <span class="pl-v">this</span>
-          <span class="pl-k">.</span>getLayoutInflater(); builder
-          <span class="pl-k">.</span>setView(inflater
-          <span class="pl-k">.</span>inflate(
-          <span class="pl-smi">R</span>
-          <span class="pl-k">.</span>layout
-          <span class="pl-k">.</span>dialog_signin,
-          <span class="pl-c1">null</span>)); builder
-
-          <span class="pl-k">.</span>setPositiveButton(
-          <span class="pl-s">
-            <span class="pl-pds">"</span>OK
-            <span class="pl-pds">"</span>
-          </span>,
-          <span class="pl-k">new</span>
-          <span class="pl-smi">DialogInterface</span>.
-          <span class="pl-smi">OnClickListener</span>() {
-          <span class="pl-k">public</span>
-          <span class="pl-k">void</span>
-          <span class="pl-en">onClick</span>(
-          <span class="pl-smi">DialogInterface</span>
-          <span class="pl-v">dialog</span>,
-          <span class="pl-k">int</span>
-          <span class="pl-v">id</span>) {
-          <span class="pl-smi">AlertDialog</span> dlg
-          <span class="pl-k">=</span> (
-          <span class="pl-smi">AlertDialog</span>) dialog;
-          <span class="pl-k">final</span>
-          <span class="pl-smi">String</span> email
-          <span class="pl-k">=</span> ((
-          <span class="pl-smi">TextView</span>)dlg
-          <span class="pl-k">.</span>findViewById(
-          <span class="pl-smi">R</span>
-          <span class="pl-k">.</span>id
-          <span class="pl-k">.</span>email))
-          <span class="pl-k">.</span>getText()
-          <span class="pl-k">.</span>toString();
-          <span class="pl-k">final</span>
-          <span class="pl-smi">String</span> password
-          <span class="pl-k">=</span>((
-          <span class="pl-smi">TextView</span>)dlg
-          <span class="pl-k">.</span>findViewById(
-          <span class="pl-smi">R</span>
-          <span class="pl-k">.</span>id
-          <span class="pl-k">.</span>password))
-          <span class="pl-k">.</span>getText()
-          <span class="pl-k">.</span>toString();
-
-          <span class="pl-c">// TODO: sign in to Firebase</span>
-
-          } }); builder
-          <span class="pl-k">.</span>setNegativeButton(
-          <span class="pl-s">
-            <span class="pl-pds">"</span>Cancel
-            <span class="pl-pds">"</span>
-          </span>,
-          <span class="pl-c1">null</span>);
-
-          <span class="pl-smi">AlertDialog</span> dialog
-          <span class="pl-k">=</span> builder
-          <span class="pl-k">.</span>create(); dialog
-          <span class="pl-k">.</span>show(); }
-        </pre>
-      </div>
-
-      <p>This method builds and show the dialog, with our two text boxes as the main body. When the user clicks OK, it extracts the email address and password from the text controls.</p>
-
-      <ul>
-        <li>Now wire the values that we got from the dialog to the Firebase Authentication back-end. Replace the TODO with the following code:</li>
-      </ul>
-
-      <div class="highlight highlight-java">
-        <pre> mFirebaseRef
-          <span class="pl-k">.</span>createUser(email, password,
-          <span class="pl-k">new</span>
-          <span class="pl-smi">Firebase</span>.
-          <span class="pl-smi">ResultHandler</span>() {
-          <span class="pl-k">@Override</span>
-          <span class="pl-k">public</span>
-          <span class="pl-k">void</span>
-          <span class="pl-en">onSuccess</span>() { mFirebaseRef
-          <span class="pl-k">.</span>authWithPassword(email, password,
-          <span class="pl-c1">null</span>); }
-          <span class="pl-k">@Override</span>
-          <span class="pl-k">public</span>
-          <span class="pl-k">void</span>
-          <span class="pl-en">onError</span>(
-          <span class="pl-smi">FirebaseError</span>
-          <span class="pl-v">firebaseError</span>) { mFirebaseRef
-          <span class="pl-k">.</span>authWithPassword(email, password,
-          <span class="pl-c1">null</span>); } });
-        </pre>
-      </div>
-
-      <p>In this code, we always try to register the user. If the user already registered that will result in onError, otherwise it will result on onSuccess.
-        <br> Either way, we next call authWithPassword to authenticate the (pre-existing or just-created) user. </p>
-
-      <ul>
-        <li>
-          <p>With the above we have the registration/login flow working. But we still need to listen to when Firebase Authentication tells us the user has been authenticated, so that we can store the username and use that in the chat message instead of the
-            hard-coded value we have now.</p>
-        </li>
-        <li>
-          <p>Add a field to the class to hold the user name:</p>
-        </li>
-      </ul>
-
-      <div class="highlight highlight-java">
-        <pre>
-          <span class="pl-k">private</span>
-          <span class="pl-smi">String</span> mUsername;</pre>
-      </div>
-
-      <ul>
-        <li>Add the end of the onCreate method, add a callback method that listens for authentication state changes in Firebase:</li>
-      </ul>
-
-      <div class="highlight highlight-java">
-        <pre> mFirebaseRef
-          <span class="pl-k">.</span>addAuthStateListener(
-          <span class="pl-k">new</span>
-          <span class="pl-smi">Firebase</span>.
-          <span class="pl-smi">AuthStateListener</span>() {
-          <span class="pl-k">@Override</span>
-          <span class="pl-k">public</span>
-          <span class="pl-k">void</span>
-          <span class="pl-en">onAuthStateChanged</span>(
-          <span class="pl-smi">AuthData</span>
-          <span class="pl-v">authData</span>) {
-          <span class="pl-k">if</span>(authData
-          <span class="pl-k">!=</span>
-          <span class="pl-c1">null</span>) { mUsername
-          <span class="pl-k">=</span> ((
-          <span class="pl-smi">String</span>)authData
-          <span class="pl-k">.</span>getProviderData()
-          <span class="pl-k">.</span>get(
-          <span class="pl-s">
-            <span class="pl-pds">"</span>email
-            <span class="pl-pds">"</span>
-          </span>)); findViewById(
-          <span class="pl-smi">R</span>
-          <span class="pl-k">.</span>id
-          <span class="pl-k">.</span>login)
-          <span class="pl-k">.</span>setVisibility(
-          <span class="pl-smi">View</span>
-          <span class="pl-c1">
-            <span class="pl-k">.</span>INVISIBLE</span>); }
-          <span class="pl-k">else</span> { mUsername
-          <span class="pl-k">=</span>
-          <span class="pl-c1">null</span>; findViewById(
-          <span class="pl-smi">R</span>
-          <span class="pl-k">.</span>id
-          <span class="pl-k">.</span>login)
-          <span class="pl-k">.</span>setVisibility(
-          <span class="pl-smi">View</span>
-          <span class="pl-c1">
-            <span class="pl-k">.</span>VISIBLE</span>); } } });
-        </pre>
-      </div>
-
-      <p>Firebase calls our listener whenever the authentication state changes, so whenever the user logs in or out. When the user logs in, we store their email address in our field and hide the login button.</p>
-
-      <p>Firebase Authentication supports multiple authentication providers and each of them exposes a different set of data. For example, if we'd allow our users to authenticate with their existing Twitter account, we could identify them by their twitter
-        handle.
-      </p>
-
-      <ul>
-        <li>Finally, replace the hard-coded username with the field we just populated:</li>
-      </ul>
-
-      <div class="highlight highlight-java">
-        <pre> mFirebaseRef
-          <span class="pl-k">.</span>push()
-          <span class="pl-k">.</span>setValue(
-          <span class="pl-k">new</span>
-          <span class="pl-smi">ChatMessage</span>(mUsername, message));</pre>
-      </div>
-
-      <p>We could definitely improve the layout of things. But this step has been long enough as it is. So let's wrap up with a few notes.</p>
-
-      <ul>
-        <li>One thing you may note is that the user stays logged in, even when they restart the app. If instead you want to sign out the user, you can call:</li>
-      </ul>
-
-      <div class="highlight highlight-java">
-        <pre> mFirebaseRef
-          <span class="pl-k">.</span>unauth();</pre>
-      </div>
-
-      <p>This will trigger the AuthStateListener we created before, which will clear the username field and re-enable the login button.</p>
-
-      <ul>
-        <li>If you want to know which users logged in to your application, you can find them in the Login &amp; Auth tab of your Firebase's dashboard.</li>
-      </ul>
-
-      <p>This is also where you can configure the password reset emails that you can send to your users, in case they forgot their password.</p>
 
       <h3>
-        <a id="wrap-up" class="anchor" href="#wrap-up" aria-hidden="true">
+        <a id="adding-tabs" class="anchor" href="#adding-tabs" aria-hidden="true">
           <span class="octicon octicon-link"></span>
-        </a>Wrap-up</h3>
+        </a>Adding Tabs</h3>
 
-      <p>Congratulations! You've just built a fully functional multi-user chat application that uses Firebase to store the data and authentication users.</p>
+      <p>Sometimes we need tabs to make our application more easy to use and we need the user to access subsets of a bigger set, that means the data sets are different but are similar in nature. For eg. Play Newsstand, the news feed is distributed in different types : the nature is same but they are different.</p>
 
-      <p>As a reward for finishing the codelab you’ve earned a promo code! When you’re ready to put your Firebase app in production, you can use the promo code
-        <strong>androidcodelab49</strong> for $49 off your first month of a paid Firebase plan. Just enter the code when you upgrade your Firebase. </p>
+      <li>To add Tabs, we will use TabLayout</li>
+
+      <p>Add the TabLayout view in your AppBarLayout in the activity_main.xml :</p>
+
+<div style="background: #ffffff; overflow:auto;width:auto;border:white;border-width:.0em .0em .0em .0em;padding:.0em .0em"><pre style="margin: 0; line-height: 125%"><span style="color: #007700">&lt;android.support.design.widget.TabLayout</span>
+                <span style="color: #0000CC">android:id=</span><span style="background-color: #fff0f0">&quot;@+id/tabs&quot;</span>
+                <span style="color: #0000CC">android:layout_below=</span><span style="background-color: #fff0f0">&quot;@+id/toolbar&quot;</span>
+                <span style="color: #0000CC">android:layout_width=</span><span style="background-color: #fff0f0">&quot;match_parent&quot;</span>
+                <span style="color: #0000CC">android:layout_height=</span><span style="background-color: #fff0f0">&quot;wrap_content&quot;</span>
+                <span style="color: #0000CC">android:background=</span><span style="background-color: #fff0f0">&quot;?attr/colorPrimary&quot;</span>
+                <span style="color: #0000CC">android:minHeight=</span><span style="background-color: #fff0f0">&quot;?attr/actionBarSize&quot;</span>
+                <span style="color: #0000CC">android:theme=</span><span style="background-color: #fff0f0">&quot;@style/ThemeOverlay.AppCompat.Dark.ActionBar&quot;</span>
+                <span style="color: #0000CC">app:tabIndicatorColor=</span><span style="background-color: #fff0f0">&quot;@android:color/white&quot;</span>
+                <span style="color: #0000CC">app:tabIndicatorHeight=</span><span style="background-color: #fff0f0">&quot;4dp&quot;</span><span style="color: #007700">/&gt;</span>
+</pre></div>
+
+  <li>We have given the layout, but we still need to add tabs and configure them : </li>
+
+  <p>First we will add TabLayout : </p>
+
+<div style="background: #ffffff; overflow:auto;width:auto;border:white;border-width:.0em .0em .0em .0em;padding:.0em .0em"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">private</span> TabLayout tabLayout<span style="color: #333333">;</span>
+</pre></div>
+
+<p>Now we will initialize and add tabs : </p>
+
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:white;border-width:.0em .0em .0em .0em;padding:.0em .0em"><pre style="margin: 0; line-height: 125%">tabLayout <span style="color: #333333">=</span> <span style="color: #333333">(</span>TabLayout<span style="color: #333333">)</span>findViewById<span style="color: #333333">(</span>R<span style="color: #333333">.</span><span style="color: #0000CC">id</span><span style="color: #333333">.</span><span style="color: #0000CC">tabs</span><span style="color: #333333">);</span>
+tabLayout<span style="color: #333333">.</span><span style="color: #0000CC">addTab</span><span style="color: #333333">(</span>tabLayout<span style="color: #333333">.</span><span style="color: #0000CC">newTab</span><span style="color: #333333">().</span><span style="color: #0000CC">setText</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;Contact&quot;</span><span style="color: #333333">));</span>
+tabLayout<span style="color: #333333">.</span><span style="color: #0000CC">addTab</span><span style="color: #333333">(</span>tabLayout<span style="color: #333333">.</span><span style="color: #0000CC">newTab</span><span style="color: #333333">().</span><span style="color: #0000CC">setText</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;Message&quot;</span><span style="color: #333333">));</span>
+tabLayout<span style="color: #333333">.</span><span style="color: #0000CC">addTab</span><span style="color: #333333">(</span>tabLayout<span style="color: #333333">.</span><span style="color: #0000CC">newTab</span><span style="color: #333333">().</span><span style="color: #0000CC">setText</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;Images&quot;</span><span style="color: #333333">));</span>
+</pre></div>
+
 
       <h3>
         <a id="what-weve-covered" class="anchor" href="#what-weve-covered" aria-hidden="true">
           <span class="octicon octicon-link"></span>
         </a>What we've covered</h3>
 
-      <p>✓ Interacting with a Firebase Database from an Android application.
-        <br> ✓ Using Firebase Authentication in an Android application to authenticate users.</p>
+      <p>✓ Starting Android Application development.
+        <br> ✓ Using some common components used in an application and using Material Design .</p>
 
       <h3>
         <a id="next-steps" class="anchor" href="#next-steps" aria-hidden="true">
@@ -789,20 +590,15 @@
         </a>Next Steps</h3>
 
       <ul>
-        <li>Add a log-out button to the app</li>
-        <li>Add a password-reset button to the login dialog</li>
-        <li>Allow the user to specify a nickname or use one of the Firebase's social authentication providers to look up their first name.</li>
-        <li>Get your app on the Play Store! Learn More</li>
-        <li>Learn all about using <a href="https://www.firebase.com/docs/android/">Firebase with Android</a> by following the <a href="https://www.firebase.com/docs/android/guide/">Firebase for Android development guide</a>.</li>
-        <li>Study a more advanced sample application: <a href="https://github.com/firebase/AndroidDrawing">AndroidDrawing</a>
-        </li>
-        <li>Learn about <a href="https://github.com/firebase/geofire-java">GeoFire</a> for Java, which allows you to add realtime location queries to your Android application</li>
+        <li>Save multiple contacts and display them in list.</li>
+        <li>Make new Fragments and attach them to tabs you created.</li>
+        <li>Show primary contact detail in Navigation Drawer header.</li>
+
       </ul>
 
       <footer class="site-footer">
-        <span class="site-footer-owner"><a href="https://github.com/rohanraarora/Firebase-Codelab">Firebase Android Codelab</a> is maintained by <a href="https://github.com/rohanraarora">rohanraarora</a>.</span>
+        <span class="site-footer-owner"><a href="https://github.com/Vatsal-Bajpai/Android-Codelab-GDG">Android Codelab for Beginners</a> is maintained by <a href="https://github.com/Vatsal-Bajpai">Vatsal Bajpai</a>.</span>
 
-        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
       </footer>
 
   </section>
